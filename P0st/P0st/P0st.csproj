@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+        <PackageReference Include="Xamarin.Essentials.Interfaces" Version="1.6.1" />
+        <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Images\DieP0st_Logo.png" />
+      <EmbeddedResource Include="Images\DieP0st_Logo.png" />
+      <None Remove="Images\DieP0st_Logo_40.png" />
+      <EmbeddedResource Include="Images\DieP0st_Logo_40.png" />
+      <None Remove="ionicons.otf" />
+      <EmbeddedResource Include="ionicons.otf" />
+      <None Remove="fa5ps.otf" />
+      <EmbeddedResource Include="fa5ps.otf" />
+      <None Remove="post.wav" />
+      <EmbeddedResource Include="post.wav" />
+      <None Remove="knock.mp3" />
+      <EmbeddedResource Include="knock.mp3" />
+      <None Remove="send.mp3" />
+      <EmbeddedResource Include="send.mp3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\OpenPr0gramm\OpenPr0gramm.csproj" />
+    </ItemGroup>
+</Project>

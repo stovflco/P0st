@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:createConversation="clr-namespace:P0st.CreateConversation;assembly=P0st"
+             xmlns:extensions="clr-namespace:P0st.Extensions;assembly=P0st"
+             xmlns:shared1="clr-namespace:P0st.Shared;assembly=P0st"
+             xmlns:openPr0Gramm="clr-namespace:OpenPr0gramm;assembly=OpenPr0gramm"
+             x:Class="P0st.CreateConversation.CreateConversationPage"
+             x:DataType="createConversation:CreateConversationPageViewModel">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            
+            <!--<Image Source="{extensions:ImageResource P0st.Images.DieP0st_Logo_40.png}"
+                   HeightRequest="40"></Image>-->
+            <ImageButton Source="{extensions:ImageResource P0st.Images.DieP0st_Logo_40.png}"
+                         HeightRequest="40"
+                         WidthRequest="40"
+                         Command="{Binding NavigateBackCommand}"/>
+            <Entry Grid.Column="1" Placeholder="Benutzername…"
+                   VerticalOptions="End"
+                   x:Name="SearchEntry"/>
+            <Button Grid.Column="2" Style="{StaticResource IconButton}" 
+                    Text="{x:Static shared1:IonIcons.IosSearch}"
+                    VerticalOptions="End"
+                    Command="{Binding SearchCommand}"
+                    CommandParameter="{Binding Source={x:Reference SearchEntry}, Path=Text}"/>
+        </Grid>
+        
+        <Label Grid.Row="1"
+               HeightRequest="1"
+               BackgroundColor="{StaticResource BackgroundSecondaryColor}"
+               Margin="0,0,0,20" />
+        
+        <ScrollView Grid.Row="2"
+                    x:Name="ScrollView"
+                    IsVisible="{Binding CurrentUser, Converter={StaticResource NullBooleanConverter}}">
+            <StackLayout Orientation="Vertical"
+                         Padding="10,0">
+                <Label Text="{Binding CurrentUser.User.Name}"
+                       Style="{StaticResource Title}"
+                       TextTransform="Default"
+                       TextColor="#f2f5f4"
+                       FontSize="30"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding CurrentUser.User.Score, StringFormat='{0} ฿'}" Style="{StaticResource Title}" />
+                    <StackLayout Orientation="Horizontal"
+                                 HorizontalOptions="EndAndExpand">
+                        <Label Text="{Binding CurrentUser.User.Mark}"
+                               Style="{StaticResource Title}" />
+                        <Label Text="●"
+                               Style="{StaticResource Title}"
+                               TextColor="{Binding CurrentUser.User.Mark, Converter={StaticResource UserMarkConverter}}" />
+                    </StackLayout>
+                </StackLayout>
+                <shared1:ItemsControl ItemsSource="{Binding CurrentUser.Badges}">
+                    <shared1:ItemsControl.ItemsPanel>
+                        <shared1:WrapLayout />
+                    </shared1:ItemsControl.ItemsPanel>
+                    <shared1:ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="openPr0Gramm:ProfileBadge">
+                            <Image Source="{Binding Image, StringFormat='https://pr0gramm.com/media/badges/{0}'}"
+                                   WidthRequest="20"
+                                   HeightRequest="20"/>
+                        </DataTemplate>
+                    </shared1:ItemsControl.ItemTemplate>
+                </shared1:ItemsControl>
+            </StackLayout>
+        </ScrollView>
+        
+        <Button Grid.Row="3" HorizontalOptions="Fill" 
+                Margin="10"
+                Text="Beef senden" 
+                IsVisible="{Binding CurrentUser, Converter={StaticResource NullBooleanConverter}}"
+                Command="{Binding NavigateChatCommand}"
+                CommandParameter="{Binding CurrentUser.User.Name}"/>
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           Grid.RowSpan="4"
+                           Color="{StaticResource AccentColor}"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           HeightRequest="50"
+                           WidthRequest="50"/>
+    </Grid>
+</ContentPage>

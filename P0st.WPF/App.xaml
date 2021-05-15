@@ -1,0 +1,10 @@
+﻿<Application x:Class="P0st.WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:P0st.WPF"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <SolidColorBrush x:Key="CommandBarBackgroundColor" Color="#161618" />
+        <SolidColorBrush x:Key="CommandBarTextColor" Color="White" />
+    </Application.Resources>
+</Application>

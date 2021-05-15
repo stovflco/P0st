@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chatList="clr-namespace:P0st.ChatList;assembly=P0st"
+             xmlns:dataTemplates="clr-namespace:FreeChat.Views.DataTemplates;assembly=P0st"
+             xmlns:openPr0Gramm="clr-namespace:OpenPr0gramm;assembly=OpenPr0gramm"
+             xmlns:shared1="clr-namespace:P0st.Shared;assembly=P0st"
+             xmlns:extensions="clr-namespace:P0st.Extensions;assembly=P0st"
+             x:Class="P0st.ChatList.ChatListPage"
+             x:Name="ChatListPageElement"
+             x:DataType="chatList:ChatListPageViewModel">
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Horizontal" Padding="10">
+            <Image Source="{extensions:ImageResource P0st.Images.DieP0st_Logo_40.png}"
+                   HeightRequest="40" 
+                   WidthRequest="40" 
+                   HorizontalOptions="Start"></Image>
+            <Button Style="{StaticResource IconButton}" 
+                    Text="{x:Static shared1:IonIcons.IosCreate}"
+                    HorizontalOptions="EndAndExpand"
+                    HeightRequest="40" 
+                    WidthRequest="40" 
+                    Command="{Binding CreateConversationCommand}"/>
+        </StackLayout>
+        
+        <Label Grid.Row="1"
+               HeightRequest="1" 
+               BackgroundColor="{StaticResource BackgroundSecondaryColor}" 
+               Margin="0,0,0,20"/>
+
+        <ScrollView Grid.Row="2" Scrolled="ScrollView_OnScrolled" x:Name="ScrollView">
+            <shared1:ItemsControl ItemsSource="{Binding Users}"
+                                  VerticalOptions="FillAndExpand"
+                                  HorizontalOptions="FillAndExpand" Spacing="10">
+                <shared1:ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="openPr0Gramm:ConversationUser">
+                        <Grid BackgroundColor="{StaticResource BackgroundSecondaryColor}">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ViewModel.OpenChatCommand, Source={x:Reference ChatListPageElement}}"
+                                                      CommandParameter="{Binding Name}"/>
+                            </Grid.GestureRecognizers>
+                            <dataTemplates:SimpleUserProfileTemplate />
+                        </Grid>
+                    </DataTemplate>
+                </shared1:ItemsControl.ItemTemplate>
+            </shared1:ItemsControl>
+        </ScrollView>
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Grid.RowSpan="3"
+                        Color="{StaticResource AccentColor}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        HeightRequest="50"
+                        WidthRequest="50"/>
+    </Grid>
+</ContentPage>

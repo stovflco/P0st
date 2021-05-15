@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shared="clr-namespace:P0st.Shared;assembly=P0st"
+             xmlns:internals="clr-namespace:Xamarin.Forms.Internals;assembly=Xamarin.Forms.Core"
+             x:Class="P0st.App"
+             UserAppTheme="Dark">
+    <Application.Resources>
+        
+        <shared:DateHUmanizerConverter x:Key="DatehumanizerConverter"/>
+        <shared:UserMarkConverter x:Key="UserMarkConverter"/>
+        <shared:NullBooleanConverter x:Key="NullBooleanConverter" />
+        
+        <ResourceDictionary>
+            <Color x:Key="BackgroundColor">#161618</Color>
+            <Color x:Key="BackgroundSecondaryColor">#222222</Color>
+            <Color x:Key="TextPrimaryColor">#ee4d2e</Color>   
+            <Color x:Key="AccentColor">#ee4d2e</Color>   
+            <Color x:Key="TimeColor">#444</Color>   
+    
+            <Color x:Key="FrameColor">#FF1f1f1f</Color>
+            <Color x:Key="TextSecondaryColor">#eFeFeF</Color>
+            
+            <Style TargetType="NavigationPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+            </Style>
+            <Style TargetType="Page" x:Key="PageStyle">
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}" />
+                <Setter Property="NavigationPage.HasNavigationBar" Value="False"></Setter>
+            </Style>
+            <Style TargetType="Page">
+                <Setter Property="BackgroundColor" Value="#161618"/>
+            </Style>
+            <Style x:Key="Title" TargetType="Label">
+                <Setter Property="FontSize" Value="18"></Setter>
+                <Setter Property="TextTransform" Value="Uppercase"></Setter>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"></Setter>
+            </Style>
+            <Style x:Key="LoginHint" TargetType="Label">
+                <Setter Property="TextColor" Value="#ee4d2e"></Setter>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#ee4d2e"/>
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="Padding" Value="8,6"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            <Style x:Key="IconButton" TargetType="Button">
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#ee4d2e"/>
+                <Setter Property="FontFamily" Value="ionicons"/>
+                <Setter Property="FontSize" Value="14"/>
+                <!--#ee4d2e-->
+            </Style>
+            <Style x:Key="FaButton" TargetType="Button">
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="BackgroundColor" Value="#ee4d2e"/>
+                <Setter Property="FontFamily" Value="fa5ps"/>
+                <Setter Property="FontAttributes" Value="900"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style x:Key="TransparentFaButton" TargetType="Button">
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="#ee4d2e"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontFamily" Value="fa5ps"/>
+                <Setter Property="FontAttributes" Value="900"/>
+                <Setter Property="FontSize" Value="14"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource BackgroundSecondaryColor}" />
+            </Style>
+            <Style TargetType="Editor">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource BackgroundSecondaryColor}" />
+            </Style>
+            
+            <Style TargetType="ImageButton">
+                <Setter Property="BorderWidth" Value="0"/>
+                <Setter Property="BorderColor" Value="Transparent"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

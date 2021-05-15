@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:startup="clr-namespace:P0st.Startup;assembly=P0st"
+             xmlns:extensions="clr-namespace:P0st.Extensions;assembly=P0st"
+             x:Class="P0st.Startup.StartupPage"
+             x:DataType="startup:StartupPageViewModel">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
+            <Image Source="{extensions:ImageResource P0st.Images.DieP0st_Logo.png}"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   Aspect="AspectFill"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

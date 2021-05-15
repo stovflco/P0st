@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                x:Class="FreeChat.Views.DataTemplates.SimpleUserProfileTemplate"
+                x:Name="simpleUserProfileTemplate_srew"
+             x:DataType="openPr0Gramm:ConversationUser"
+                xmlns:openPr0Gramm="clr-namespace:OpenPr0gramm;assembly=OpenPr0gramm">
+  <ContentView.Content>
+        <Grid Padding="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto"/>                                        
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Grid.Column="0" Spacing="5"
+                         VerticalOptions="Center">
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Name}" />
+                    <Label Text="●" TextColor="{Binding Mark, Converter={StaticResource UserMarkConverter}}"></Label>
+                </StackLayout>
+                
+                <StackLayout Orientation="Vertical" Spacing="0">
+                    <Label TextColor="{StaticResource TextPrimaryColor}"><!--
+                           FontFamily="{StaticResource QuickSandRegular}"-->
+                        <Label.Triggers>
+                            <DataTrigger TargetType="Label" 
+                                         Value="True"><!--
+                                Binding="{Binding Peer.IsOnline}"-->
+                                <Setter Property="Text" Value="Online"/>
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    
+                    <Label Text="{Binding LastMessageAt, Converter={StaticResource DatehumanizerConverter}}"
+                           TextColor="{StaticResource TimeColor}"/>
+                </StackLayout>
+            </StackLayout>
+            
+            <StackLayout Grid.Column="1" VerticalOptions="Start">
+                <StackLayout.Triggers>
+                    <MultiTrigger TargetType="StackLayout" >
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding UnreadCount}" Value="0"></BindingCondition>
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsVisible" Value="False" />
+                    </MultiTrigger>
+                </StackLayout.Triggers>
+                <Label BackgroundColor="{StaticResource AccentColor}" 
+                       Padding="2"
+                       Text="{Binding UnreadCount}"></Label>
+            </StackLayout>
+
+                <!--<Label Text="{Binding LastMessageAt, Converter={StaticResource DatehumanizerConverter}}" 
+                   Grid.Column="1"
+                   HorizontalTextAlignment="End"
+                   VerticalOptions="Center"
+                   FontSize="Caption"
+                   TextColor="{StaticResource TimeColor}"
+                   HorizontalOptions="Center"
+                   Margin="10" />-->
+            
+        </Grid>
+  </ContentView.Content>
+</ContentView>

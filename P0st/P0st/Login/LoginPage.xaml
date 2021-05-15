@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:P0st.Extensions;assembly=P0st"
+             xmlns:login="clr-namespace:P0st.Login;assembly=P0st"
+             xmlns:p0St="clr-namespace:P0st;assembly=P0st"
+             x:Class="P0st.Login.LoginPage"
+             x:DataType="login:LoginPageViewModel">
+        <Grid HorizontalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70" />
+                <ColumnDefinition Width="200" />
+            </Grid.ColumnDefinitions>
+        
+            <Image Grid.Row="0" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="2"
+                   HeightRequest="150" 
+                   Margin="0,20,0,10"
+                   Source="{extensions:ImageResource P0st.Images.DieP0st_Logo.png}"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="Anmelden" Style="{StaticResource Title}" />
+            <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Hint}" Style="{StaticResource LoginHint}" />
+            <Label Grid.Row="3" Grid.Column="0" Text="Benutzer:" Padding="0" VerticalOptions="Center" />
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Username}" VerticalOptions="Center" IsSpellCheckEnabled="False" />
+            <Label Grid.Row="4" Grid.Column="0" Text="Kennwort:" VerticalOptions="Center" />
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Password}" IsPassword="True" VerticalOptions="Center" IsSpellCheckEnabled="False" />
+            <Label Grid.Row="5" Grid.Column="0" Text="Captcha:" />
+            <p0St:CaptchaImage Grid.Row="6" Grid.Column="0"
+                               Grid.ColumnSpan="2" 
+                               HorizontalOptions="CenterAndExpand"
+                               Aspect="Fill"
+                               Source="{Binding CaptchaImage}" 
+                               AspectRatio="0.25"
+            />
+            <Entry Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Captcha}"></Entry>
+            <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" Text="Login" Command="{Binding LoginCommand}" />
+        </Grid>
+</ContentPage>

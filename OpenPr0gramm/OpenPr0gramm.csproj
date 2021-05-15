@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <Authors>holzmaster</Authors>
+    <Product>OpenPr0gramm</Product>
+    <PackageId>OpenPr0gramm</PackageId>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Open source .NET API for pr0gramm</Description>
+    <PackageIconUrl>https://pr0gramm.com/media/pr0gramm-favicon.png</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/holzmaster/OpenPr0gramm/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/holzmaster/OpenPr0gramm</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/holzmaster/OpenPr0gramm.git</RepositoryUrl>
+    <PackageTags>pr0gramm open api wrapper json http</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonNet.PrivateSettersContractResolvers.Source" Version="0.1.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Refit" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http.WinHttpHandler" Version="4.5.2" />
+  </ItemGroup>
+
+</Project>
